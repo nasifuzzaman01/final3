@@ -3,47 +3,220 @@ Image Manipulation Software
 Student Name: Md Nasifuzzaman
 Roll: 1820
 
-A C-based desktop image manipulation application built using the IUP GUI toolkit and IM image-processing library. The application provides a simple graphical interface for opening BMP images, applying common pixel-level transformations, undoing the last operation, and saving the result.
+Project Description
+
+This project is a C-based Image Manipulation Software developed using the IUP GUI toolkit and IM image-processing library.
+
+The application provides a graphical interface for opening BMP images and performing several image-processing operations. The user can apply an operation, view the result immediately, undo the previous operation, and save the edited image.
 
 Features
 
-Open BMP images through a file dialog
+Open BMP images
 
-Save the edited image as a BMP file
+Grayscale
 
-Grayscale conversion
-
-Color inversion
+Inversion
 
 Horizontal flip
 
 Vertical flip
 
-90-degree rotation
+Rotate 90°
 
-Blur using a neighborhood averaging operation
+Blur
 
-Brightness adjustment from -255 to 255
+Brightness adjustment
 
-Crop using X, Y, Width, and Height
+Crop
 
-Undo the most recent image operation
+Undo
 
-Basic validation and warning dialogs for invalid operations
+Save As
+
+Error and warning popups
 
 Screenshots
 
-Application Interface
+Important: The image files must be uploaded/pushed to GitHub in a folder named screenshots located in the same directory as this README.md.
 
-The following screenshot shows the application's GUI and its available image-editing controls.
+Example:
 
+image_manipulation/
+├── README.md
+├── screenshots/
+│   ├── 01_primary.png
+│   ├── 02_grayacale.png
+│   ├── 03_inversion.png
+│   ├── 04_hor_flip.png
+│   ├── 05_vert_flip.png
+│   ├── 06_rotate_90.png
+│   ├── 07_blur.png
+│   ├── 08_brightness.png
+│   ├── 09_crop.png
+│   ├── 10_options.png
+│   └── 11_error_popup.png
+└── ...
 
+The filenames below must match the actual filenames exactly, including spelling and capitalization.
 
-Example: Inversion
+01. Primary Interface
 
-The project includes lena.bmp and its inverted result invertedLena.bmp.
+The main window of the software contains the image display area, menus, and image manipulation controls.
 
+<img src="./screenshots/01_primary.png" alt="Primary Interface" width="800">
 
+02. Grayscale
+
+The Grayscale operation converts a colored image into shades of gray.
+
+<img src="./screenshots/02_grayacale.png" alt="Grayscale" width="800">
+
+03. Inversion
+
+The Inversion operation reverses the intensity of the image's color channels.
+
+<img src="./screenshots/03_inversion.png" alt="Inversion" width="800">
+
+04. Horizontal Flip
+
+The Horizontal Flip operation mirrors the image from left to right.
+
+<img src="./screenshots/04_hor_flip.png" alt="Horizontal Flip" width="800">
+
+05. Vertical Flip
+
+The Vertical Flip operation mirrors the image from top to bottom.
+
+<img src="./screenshots/05_vert_flip.png" alt="Vertical Flip" width="800">
+
+06. Rotate 90°
+
+The Rotate 90° operation rotates the image by 90 degrees.
+
+<img src="./screenshots/06_rotate_90.png" alt="Rotate 90 degrees" width="800">
+
+07. Blur
+
+The Blur operation smooths the image by averaging neighboring pixel values.
+
+<img src="./screenshots/07_blur.png" alt="Blur" width="800">
+
+08. Brightness
+
+The Brightness control allows the user to increase or decrease image brightness.
+
+<img src="./screenshots/08_brightness.png" alt="Brightness" width="800">
+
+09. Crop
+
+The Crop feature allows the user to select a rectangular area using X, Y, Width, and Height values.
+
+<img src="./screenshots/09_crop.png" alt="Crop" width="800">
+
+10. Options
+
+The application provides menu and control options for opening, saving, exiting, and manipulating images.
+
+<img src="./screenshots/10_options.png" alt="Options" width="800">
+
+11. Error Popup
+
+The application displays an error or warning popup when invalid input or an invalid operation is detected.
+
+<img src="./screenshots/11_error_popup.png" alt="Error Popup" width="800">
+
+Project Structure
+
+image_manipulation/
+├── Makefile
+├── README.md
+├── include/
+│   └── custom.h
+├── src/
+│   ├── main.c
+│   ├── gui.c
+│   ├── menu.c
+│   ├── controls.c
+│   ├── ui.c
+│   └── utils.c
+├── images/
+├── iup/
+├── im/
+└── screenshots/
+    ├── 01_primary.png
+    ├── 02_grayacale.png
+    ├── 03_inversion.png
+    ├── 04_hor_flip.png
+    ├── 05_vert_flip.png
+    ├── 06_rotate_90.png
+    ├── 07_blur.png
+    ├── 08_brightness.png
+    ├── 09_crop.png
+    ├── 10_options.png
+    └── 11_error_popup.png
+
+Build and Run
+
+Requirements
+
+The software is designed to run in Ubuntu/Linux or Ubuntu through WSL.
+
+Required packages:
+
+GCC
+
+Make
+
+GTK 3 development libraries
+
+X11 development libraries
+
+pkg-config
+
+The project also contains the IUP and IM libraries used by the Makefile.
+
+Install Dependencies
+
+sudo apt update
+sudo apt install build-essential libgtk-3-dev libx11-dev pkg-config
+
+Enter the Project Directory
+
+cd ~/image_manipulation
+
+Change the path if your project is stored somewhere else.
+
+Build
+
+Run:
+
+make app
+
+The Makefile compiles the C source files and links the required libraries. A successful build creates the executable:
+
+app
+
+Run
+
+./app
+
+The Image Manipulation Software GUI will open.
+
+Use the Software
+
+Select File → Open.
+
+Choose a BMP image.
+
+Apply an image operation.
+
+Use Undo when needed.
+
+Select File → Save As to save the processed image.
+
+Clean Build Files
+
+make clean
 
 Technologies Used
 
@@ -61,11 +234,11 @@ Graphical user interface
 
 IM
 
-Image loading, conversion, manipulation support, and BMP saving
+Image loading and processing
 
 GTK 3
 
-GUI backend/dependencies on Linux
+Linux GUI backend
 
 GCC
 
@@ -75,279 +248,20 @@ Make
 
 Build automation
 
-Project Structure
-
-image_manipulation/
-├── Makefile
-├── app
-├── include/
-│   └── custom.h
-├── src/
-│   ├── main.c
-│   ├── gui.c
-│   ├── menu.c
-│   ├── controls.c
-│   ├── ui.c
-│   └── utils.c
-├── images/
-│   ├── lena.bmp
-│   ├── invertedLena.bmp
-│   └── a.bmp
-├── iup/
-└── im/
-
-Source-file responsibilities
-
-src/main.c — initializes the application state, starts IUP, launches the GUI, and performs cleanup.
-
-src/gui.c — creates the main window, menus, buttons, text inputs, and image display widget.
-
-src/menu.c — handles Open, Save As, and Exit.
-
-src/controls.c — implements grayscale, inversion, flips, rotation, blur, crop, brightness, and undo.
-
-src/ui.c — converts the current IM image into an IUP image and refreshes the GUI.
-
-src/utils.c — application-state validation, cleanup, and debugging helpers.
-
-include/custom.h — shared declarations, callback prototypes, and the AppState structure.
-
-Makefile — compiles and links the complete application.
-
-How the Application Works
-
-The program maintains an application state containing:
-
-typedef struct
-{
-    char *currentImageFile;
-    imImage *currentImage;
-    imImage *undoImage;
-    Ihandle *imageWidget;
-} AppState;
-
-When an image is opened, it is loaded using the IM library. Each editing operation changes currentImage and stores a duplicate in undoImage before modification. The GUI is then refreshed so the updated image is displayed.
-
-The processing operations work directly with the RGB pixel planes of the imImage.
-
-Build and Run Process
-
-The project can be built and executed from an Ubuntu/Linux terminal or from Ubuntu running through WSL on Windows.
-
-Step 1: Open the Project Directory
-
-Open the terminal and move into the project folder:
-
-cd ~/image_manipulation
-
-If the project is stored somewhere else, replace the path with the actual project location.
-
-Step 2: Install Required Build Dependencies
-
-Update the package list:
-
-sudo apt update
-
-Install GCC, Make, GTK 3 development files, X11 development files, and pkg-config:
-
-sudo apt install build-essential libgtk-3-dev libx11-dev pkg-config
-
-The project also contains the required IUP and IM libraries in the iup/ and im/ directories.
-
-Step 3: Build the Application
-
-Run the Makefile:
-
-make app
-
-The Makefile compiles the C source files and links them with the IUP, IM, GTK, and X11 libraries.
-
-If the build is successful, an executable named app is created in the project directory.
-
-Step 4: Run the Application
-
-Start the program with:
-
-./app
-
-This opens the Image Manipulation Software GUI.
-
-Step 5: Open an Image
-
-Inside the application:
-
-Click File → Open.
-
-Select a .bmp image.
-
-The selected image appears in the application window.
-
-Use the available buttons to perform image-processing operations.
-
-Step 6: Apply Image Operations
-
-The application supports:
-
-Grayscale
-
-Inversion
-
-Horizontal Flip
-
-Vertical Flip
-
-Rotate 90°
-
-Blur
-
-Brightness adjustment
-
-Crop
-
-Undo
-
-Step 7: Save the Result
-
-After editing the image:
-
-Click File → Save as.
-
-Choose the destination and filename.
-
-Save the processed image as a BMP file.
-
-Step 8: Clean the Build
-
-To remove the generated executable and build files:
-
-make clean
-
-After cleaning, the application can be rebuilt at any time with:
-
-make app
-
-Complete Build and Run Commands
-
-For a quick setup, the main commands are:
-
-sudo apt update
-sudo apt install build-essential libgtk-3-dev libx11-dev pkg-config
-
-cd ~/image_manipulation
-
-make app
-
-./app
-
-Build flow:
-
-Source Code (.c/.h)
-        ↓
-      make app
-        ↓
-   GCC Compilation
-        ↓
- IUP + IM + GTK + X11
-        ↓
-    app executable
-        ↓
-       ./app
-        ↓
- Image Manipulation GUI
-
-Using the Program
-
-Run ./app.
-
-Select File → Open.
-
-Choose a .bmp image.
-
-Use the operation buttons to manipulate the image:
-
-Grayscale
-
-Inversion
-
-Horizontal Flip
-
-Vertical Flip
-
-Rotate 90deg
-
-Blur
-
-Undo
-
-For brightness, enter a value from -255 to 255 and press Apply.
-
-For cropping, enter:
-
-X coordinate
-
-Y coordinate
-
-Width
-
-Height
-
-Click Crop Image.
-
-Use File → Save as to save the processed image.
-
-Image Processing Details
-
-Grayscale
-
-The RGB values are converted using the standard weighted luminance formula:
-
-Gray = 0.299R + 0.587G + 0.114B
-
-The resulting gray value is assigned to all three RGB channels.
-
-Inversion
-
-Each channel is replaced by its complement:
-
-R' = 255 - R
-G' = 255 - G
-B' = 255 - B
-
-Brightness
-
-A user-specified value is added to every RGB channel. Values are clamped to the valid byte range:
-
-0 <= channel <= 255
-
-Horizontal and Vertical Flip
-
-Pixel positions are exchanged across the corresponding horizontal or vertical axis.
-
-90-Degree Rotation
-
-A new image is allocated with swapped width and height, and pixels are copied into their rotated positions.
-
-Blur
-
-A neighborhood averaging approach is used. The surrounding pixels are averaged to produce a smoother image.
-
-Crop
-
-A new image is created from the requested rectangular region. Invalid starting coordinates or non-positive dimensions are rejected.
-
-Undo
-
-Before an editing operation changes the current image, a duplicate is stored as the undo image. The Undo button restores that previous state.
-
-Notes
-
-The current Open/Save dialogs are configured specifically for BMP images.
-
-The program is designed for a Linux/GTK environment because the Makefile links against GTK 3 and X11.
-
-The bundled iup/ and im/ directories contain the project's local IUP and IM libraries, headers, and related files.
-
 Author
 
 Md Nasifuzzaman
 Roll: 1820
+
+Bash Build and Run Commands
+
+Run the following commands from an Ubuntu/WSL terminal:
+
+sudo apt update
+sudo apt install build-essential libgtk-3-dev libx11-dev pkg-config
+
+cd ~/image_manipulation
+
+make app
+
+./app
